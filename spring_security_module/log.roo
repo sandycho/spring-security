@@ -3,3 +3,13 @@ project --topLevelPackage com.springsecuritymodule --projectName spring_security
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-09-27 20:18:09
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-09-27 20:18:17
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-09-27 20:23:54
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-09-27 20:28:12
+jpa setup --database MYSQL --provider HIBERNATE --databaseName spring-security-module --hostName localhost --userName root --password root
+// [failed] entity jpa --class ~.entities.User
+// [failed] field string --fieldName email --notNull
+// [failed] entity jpa --class ~.main.src.entities.User
+entity jpa --class ~.entities.User --permitReservedWords true
+field string --fieldName email --notNull
+field string --fieldName password --notNull
+web mvc setup
+web mvc all --package ~.controllers
