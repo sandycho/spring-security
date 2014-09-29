@@ -285,6 +285,14 @@
             <artifactId>tiles-jsp</artifactId>
             <version>2.2.2</version>
         </dependency>
+        
+        <!-- THYMELEAF -->
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring3</artifactId>
+			<version>2.1.3.RELEASE</version>
+		</dependency>
+        
     </dependencies>
     <build>
         <plugins>

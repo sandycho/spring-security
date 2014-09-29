@@ -13,3 +13,4 @@ field string --fieldName email --notNull
 field string --fieldName password --notNull
 web mvc setup
 web mvc all --package ~.controllers
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-09-28 01:15:48
