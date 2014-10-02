@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"/>
 <title>Insert title here</title>
 </head>
 <body>
 	<h2>
-		Welcome : ${pageContext.request.userPrincipal.name} | <a href="/j_spring_security_logout"> Logout</a>
+<!-- 	<span id="dir" th:text="${@authService.getUserName()}">Se rellena con lo que contenga tittle</span> -->
+		Welcome : | <a href="/spring_security_module/uc_logout"> Logout</a>
 	</h2>
 
 </body>
