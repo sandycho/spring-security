@@ -5,13 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
+	<h1>BIENVENIDO AL MÓDULO DE SEGURIDAD DE SPRING</h1>
+	<h1>ESTA PÁGINA NO REQUIERE DE NINGÚN TIPO DE AUTENTICACIÓN</h1>
 	<div class="container bg_white">
 		<div id="nombre_usuario">
 			<span id="dir" th:text="${title}">Se rellena con lo que contenga tittle</span> <span
 				id="dir" th:text="${message}">el mensaje va aquí</span>
 		</div>
 	</div>
+	<form id="f" action="/spring_security_module/uc_logout" method="POST">
+		<table>
+			<tbody>
+				
+				<tr>
+					<td colspan="2"><input id="btn" name="submit" type="submit"
+						value="Logout"/></td>
+				</tr>
+<!-- 				<input name="_csrf" type="hidden" -->
+<!-- 					value="b48dd6fa-f4b8-4d51-bd0c-0c29c13f93b4"/> -->
+			</tbody>
+		</table>
+	</form>
 </body>
 </html>

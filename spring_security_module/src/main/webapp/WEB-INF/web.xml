@@ -62,6 +62,11 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     
+    <!-- SECURITY: Habilita el control sobre las autenticaciones en la aplicación.  -->
+    <listener>
+  		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+    
     <!-- Handles Spring requests -->
     <servlet>
         <servlet-name>spring_security_module</servlet-name>

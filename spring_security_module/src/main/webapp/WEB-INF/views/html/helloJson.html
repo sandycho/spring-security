@@ -2,19 +2,21 @@
 <html>
 <head>
 <title>Login Page</title>
+<script src="/spring_security_module/static/js/jquery-1.11.1.min.js"
+	language="javascript" type="text/javascript"></script>
 </head>
 <body>
 	<h3>Login with Username and Password</h3>
-	<form id="f" action="/spring_security_module/j_spring_security_check" method="POST">
+	<form id="f">
 		<table>
 			<tbody>
 				<tr>
 					<td>User:</td>
-					<td><input type="text" name="j_username" value=""/></td>
+					<td><input type="text" name="username" value=""/></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><input type="password" name="j_password"/></td>
+					<td><input type="password" name="password"/></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="remember-me"/></td>
@@ -37,7 +39,7 @@
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
-			url: '/spring_security_module_json_communication/uc_login',
+			url: '/spring_security_module/seeJson',
 			data: dataJSON,
 			success: function(result){
 				json = result;
@@ -54,7 +56,7 @@
 	}
 	
 	$(function(){
-		$("body").on("click", "#btn_1", function(){sendDataLogin();});
+		$("body").on("click", "#btn", function(){sendDataLogin();});
 	});
 	</script>
 </body>
