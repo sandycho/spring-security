@@ -73,6 +73,7 @@
 	<!-- SECURITY -->
 
 	<security:http entry-point-ref="loginUrlAuthenticationEntryPoint">
+		<!-- <security:http entry-point-ref="jsonAuthenticationEntryPoint"> -->
 		<security:intercept-url pattern="/admin**"
 			access="ROLE_USER" />
 		<security:intercept-url pattern="/welcome**"
@@ -80,9 +81,9 @@
 		<security:intercept-url pattern="/**"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-<!-- 		<security:form-login login-page="/login" -->
-<!-- 			default-target-url="/welcome" authentication-failure-url="/login?error" -->
-<!-- 			username-parameter="username" password-parameter="password" /> -->
+		<!-- <security:form-login login-page="/login" -->
+		<!-- default-target-url="/welcome" authentication-failure-url="/login?error" -->
+		<!-- username-parameter="username" password-parameter="password" /> -->
 
 		<security:logout logout-success-url="/"
 			delete-cookies="JSESSIONID" />
@@ -98,11 +99,11 @@
 		</security:session-management>
 
 		<security:custom-filter ref="jsonUsernamePasswordAuthenticationFilter"
-		position="FORM_LOGIN_FILTER" />
+			position="FORM_LOGIN_FILTER" />
 	</security:http>
 
 	<security:authentication-manager>
-		<security:authentication-provider >
+		<security:authentication-provider>
 			<security:user-service>
 				<security:user name="sandy" authorities="ROLE_USER" />
 			</security:user-service>
@@ -124,26 +125,25 @@
 		</property>
 	</bean>
 
+	<bean id="jsonUsernamePasswordAuthenticationFilter"
+		class="com.springsecuritymodule.security.JsonUsernamePasswordAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationSuccessHandler" ref="customSuccessHandler" />
+		<property name="authenticationFailureHandler" ref="failureHandler" />
+		<!-- <property name="filterProcessesUrl" value="j_spring_security_login"></property> -->
+		<property name="usernameParameter" value="username"></property>
+		<property name="passwordParameter" value="password"></property>
+	</bean>
+
 	<!-- <bean id="jsonUsernamePasswordAuthenticationFilter" -->
-	<!-- class="com.springsecuritymodule.security.JsonUsernamePasswordAuthenticationFilter"> -->
+	<!-- class="com.springsecuritymodule.security.CustomUsernamePasswordAuthenticationFilter"> -->
 	<!-- <property name="authenticationManager" ref="authenticationManager" 
 		/> -->
 	<!-- <property name="authenticationSuccessHandler" ref="customSuccessHandler" 
 		/> -->
 	<!-- <property name="authenticationFailureHandler" ref="failureHandler" 
 		/> -->
-	<!-- <property name="filterProcessesUrl" value="/j_spring_security_check" 
-		/> -->
-	<!-- <property name="usernameParameter" value="username" /> -->
-	<!-- <property name="passwordParameter" value="password" /> -->
 	<!-- </bean> -->
-
-	<bean id="jsonUsernamePasswordAuthenticationFilter"
-		class="com.springsecuritymodule.security.CustomUsernamePasswordAuthenticationFilter">
-		<property name="authenticationManager" ref="authenticationManager" />
-		<property name="authenticationSuccessHandler" ref="customSuccessHandler" />
-		<property name="authenticationFailureHandler" ref="failureHandler" />
-	</bean>
 
 	<!-- <bean id="customSuccessHandler" -->
 	<!-- class="com.springsecuritymodule.security.JsonAuthenticationSuccessHandler"> -->
@@ -168,7 +168,7 @@
 		class="org.springframework.security.authentication.ProviderManager">
 		<property name="providers">
 			<list>
-				<ref local="daoAuthenticationProvider"/>
+				<ref local="daoAuthenticationProvider" />
 			</list>
 		</property>
 	</bean>
@@ -181,9 +181,13 @@
 		class="org.springframework.security.core.userdetails.memory.InMemoryDaoImpl">
 		<property name="userMap" value="sandy=123,enabled,ROLE_USER"></property>
 	</bean>
-<bean id="loginUrlAuthenticationEntryPoint"
-                class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-        <property name="loginFormUrl" value="/login.html"/>
-    </bean>
-    
+	<bean id="loginUrlAuthenticationEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<property name="loginFormUrl" value="/login.html" />
+	</bean>
+	<!-- <bean id="jsonAuthenticationEntryPoint" -->
+	<!-- class="com.springsecuritymodule.security.JsonAuthenticationEntryPoint"> -->
+	<!-- <property name="loginFormUrl" value="/login.html" /> -->
+	<!-- </bean> -->
+
 </beans>

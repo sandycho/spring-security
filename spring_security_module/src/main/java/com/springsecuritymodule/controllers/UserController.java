@@ -235,6 +235,9 @@ public class UserController {
 		}
  
 		return "login";
- 
+	}
+	@RequestMapping(value="jsonLogin", method = RequestMethod.POST)
+	public String login(HttpServletRequest request, HttpServletResponse response){
+		return "happyending";
 	}
 }
