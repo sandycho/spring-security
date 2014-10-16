@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-public class utilHttpServletRequest {
+public class UtilHttpServletRequest {
 	/**
 	 * Shows the buffer's stuff.
 	 * @param request
